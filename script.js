@@ -76,3 +76,13 @@ function getTimeEntries() {
         }
     }
 }
+
+
+function saveClick () {
+    var hourBlock = $(this).val();
+    var entryFound = false;
+    var newEntryIndex = timeEntries.length;
+    var newEntry = {day:currentDate, time:hourBlock, text: $("#text"+hourBlock).val()};
+
+    
+}
