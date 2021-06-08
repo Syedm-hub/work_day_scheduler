@@ -61,3 +61,18 @@ function buildTimeBlocks() {
         containerDiv.append(newHtml);
     }
 }
+
+
+function getTimeEntries() {
+    var teList = JSON.parse(localStorage.getItem(timeEntriesName));
+
+    if (teList) {
+        timeEntries = teList;
+    }
+
+    for (let i=0; i<timeEntries.length; i++) {
+        if (timeEntries[i].day == currentDate) {
+            $("#text"+timeEntries[i].time).val(timeEntries[i].text);  
+        }
+    }
+}
