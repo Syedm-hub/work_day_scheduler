@@ -112,3 +112,16 @@ function saveClick () {
         
 
 }
+
+
+for (let i=0; i<timeEntries.length; i++) {
+    if (timeEntries[i].day == currentDate) {
+        if (timeEntries[i].time == hourBlock) {
+            timeEntries[i].text == newEntry.text;
+            entryFound = true;
+            break;
+        }
+
+        
+    }
+}
