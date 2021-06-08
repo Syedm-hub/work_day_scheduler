@@ -133,4 +133,13 @@ else if (timeEntries[i].day > currentDate) {
     newEntryIndex = i;
     break;
 }
+
+
+if (!entryFound) {
+    timeEntries.splice(newEntryIndex, 0, newEntry);
 }
+
+// store in local storage
+localStorage.setItem(timeEntriesName, JSON.stringify(timeEntries));
+
+} 
