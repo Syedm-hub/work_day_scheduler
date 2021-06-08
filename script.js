@@ -122,6 +122,15 @@ for (let i=0; i<timeEntries.length; i++) {
             break;
         }
 
-        
+        else if (timeGreater(timeEntries[i].time, hourBlock)) {
+            newEntryIndex = i;
+            break;
+        }
     }
+    
+
+else if (timeEntries[i].day > currentDate) {
+    newEntryIndex = i;
+    break;
+}
 }
