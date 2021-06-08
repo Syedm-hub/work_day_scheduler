@@ -84,5 +84,31 @@ function saveClick () {
     var newEntryIndex = timeEntries.length;
     var newEntry = {day:currentDate, time:hourBlock, text: $("#text"+hourBlock).val()};
 
-    
+    function timeGreater(time1,time2) {
+        var num1 = parseInt(time1.substring(0, time1.length-2)); 
+        var num2 = parseInt(time2.substring(0, time2.length-2)); 
+        var per1 = time1.substr(-2,2); 
+        var per2 = time2.substr(-2,2); 
+
+        if (num1 === 12) {
+            num1 = 0;
+        }
+
+        if (num2 === 12) {
+            num2 = 0;
+        }
+
+        // can compare time period first, if equal, then compare numeric part of time
+        if (per1 < per2) {
+            return false; // AM < PM
+        }
+        else if (per1 > per2) {
+            return true; // PM > AM
+        }
+        else {
+            return (num1 > num2);
+        }
+    }
+        
+
 }
