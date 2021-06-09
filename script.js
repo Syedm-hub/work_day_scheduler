@@ -34,15 +34,15 @@ currentHour = today.getHours();
 
 
 function buildTimeBlocks() {
-    var containerDiv = $(".container"); // get the container div to append new rows to
+    var containerDiv = $(".container"); 
 
-    // Loop through hourMap, from [firstEntry] of "9AM" to [lastEntry] of "5PM"
+    
     for (let hourBlock=firstEntry; hourBlock <= lastEntry; hourBlock++) {
-        // build the html for the row and the first column
+        
         var newHtml = '<div class="row time-block"> ' +
             '<div class="col-md-1 hour">' + hourMap[hourBlock] + '</div> ';
         
-        // conditionally set second column to corrent class: past, present or future
+        
         if (hourBlock < currentHour) {
             newHtml = newHtml + '<textarea class="col-md-10 description past" id="text' + 
                 hourMap[hourBlock] + '"></textarea> ';
@@ -56,12 +56,12 @@ function buildTimeBlocks() {
                 hourMap[hourBlock] + '"></textarea> ';
         };
 
-        // add last column and close the row div
+        
         newHtml = newHtml + '<button class="btn saveBtn col-md-1" value="' + hourMap[hourBlock] + '">' +
             '<i class="fas fa-save"></i></button> ' +
             '</div>';
 
-        // add new elements to container
+        
         containerDiv.append(newHtml);
     }
 }
@@ -102,12 +102,12 @@ function saveClick () {
             num2 = 0;
         }
 
-        // can compare time period first, if equal, then compare numeric part of time
+       
         if (per1 < per2) {
-            return false; // AM < PM
+            return false; 
         }
         else if (per1 > per2) {
-            return true; // PM > AM
+            return true; 
         }
         else {
             return (num1 > num2);
