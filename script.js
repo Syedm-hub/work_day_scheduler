@@ -1,83 +1,41 @@
-var currentDay = moment().format("dddd LL");
-$("#currentDay").append(currentDay);
+var todayDate = moment().format('dddd, MMM Do YYYY');
+$("#currentDay").html(todayDate);
 
-var currentTime = moment().format("LT");
-$("#currentTime").append(currentTime);
-
-
-var now = new Date().getHours();
-
-function colorCode() {
-  if (now > 9) {
-    $("#comment9am").addClass("past");
-  } else if (now >= 9 && now < 10) {
-    $("#comment9am").addClass("present");
-  } else if (now < 9) {
-    $("#comment9am").addClass("future");
-  }
-  if (now > 10) {
-    $("#comment10am").addClass("past");
-  } else if (now >= 10 && now < 11) {
-    $("#comment10am").addClass("present");
-  } else if (now < 10) {
-    $("#comment10am").addClass("future");
-  }
-  if (now > 11) {
-    $("#comment11am").addClass("past");
-  } else if (now >= 11 && now < 12) {
-    $("#comment11am").addClass("present");
-  } else if (now < 11) {
-    $("#comment11am").addClass("future");
-  }
-  if (now > 12) {
-    $("#comment12pm").addClass("past");
-  } else if (now >= 12 && now < 13) {
-    $("#comment12pm").addClass("present");
-  } else if (now < 12) {
-    $("#comment12pm").addClass("future");
-  }
-  if (now > 13) {
-    $("#comment1pm").addClass("past");
-  } else if (now >= 13 && now < 14) {
-    $("#comment1pm").addClass("present");
-  } else if (now < 13) {
-    $("#comment1pm").addClass("future");
-  }
-  if (now > 14) {
-    $("#comment2pm").addClass("past");
-  } else if (now >= 14 && now < 15) {
-    $("#comment2pm").addClass("present");
-  } else if (now < 14) {
-    $("#comment2pm").addClass("future");
-  }
-  if (now > 15) {
-    $("#comment3pm").addClass("past");
-  } else if (now >= 15 && now < 16) {
-    $("#comment3pm").addClass("present");
-  } else if (now < 15) {
-    $("#comment3pm").addClass("future");
-  }
-  if (now > 16) {
-    $("#comment4pm").addClass("past");
-  } else if (now >= 16 && now < 17) {
-    $("#comment4pm").addClass("present");
-  } else if (now < 16) {
-    $("#comment4pm").addClass("future");
-  }
-  if (now > 17) {
-    $("#comment5pm").addClass("past");
-  } else if (now >= 17 && now < 18) {
-    $("#comment5pm").addClass("present");
-  } else if (now < 17) {
-    $("#comment5pm").addClass("future");
-  }
-}
 
 
 var currentDate = ""; 
 var currentDateString = "";
 var currentHour = 8;
 var timeEntries = [];
+
+
+function timeTracker() {
+    //get current number of hours.
+    var timeNow = moment().hour();
+
+    // loop over time blocks
+    $(".time-block").each(function () {
+        var blockTime = parseInt($(this).attr("id").split("hour")[1]);
+
+        // To check the time and add the classes for background indicators
+        if (blockTime < timeNow) {
+            $(this).removeClass("future");
+            $(this).removeClass("present");
+            $(this).addClass("past");
+        }
+        else if (blockTime === timeNow) {
+            $(this).removeClass("past");
+            $(this).removeClass("future");
+            $(this).addClass("present");
+        }
+        else {
+            $(this).removeClass("present");
+            $(this).removeClass("past");
+            $(this).addClass("future");
+
+        }
+    })
+}
 
 const timeEntriesName ="WorkDaySchedule";
 const firstEntry =8;
