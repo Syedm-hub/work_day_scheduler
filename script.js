@@ -1,3 +1,7 @@
+var todayDate = moment().format('dddd, MMM Do YYYY');
+$("#currentDay").html(todayDate);
+
+
 var currentDate = ""; 
 var currentDateString = "";
 var currentHour = 8;
